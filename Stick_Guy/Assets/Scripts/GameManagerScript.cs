@@ -7,8 +7,6 @@ public class GameManagerScript : MonoBehaviour {
     //Hardcode 2 players for now
     public GameObject p1;
     public GameObject p2;
-    //private PlayerClass p1Script;
-    //private PlayerClass p2Script;
 
     private void Update()
     {
@@ -31,12 +29,6 @@ public class GameManagerScript : MonoBehaviour {
         else if (p2.getWins() == 3) {
             Win(p2);
         }
-    }
-
-    //Called when object is instantiated
-    private void Start() {
-        //p1Script = p1.GetComponent<PlayerClass>();
-        //p2Script = p2.GetComponent<PlayerClass>();
     }
 
     //Selected player wins the game
