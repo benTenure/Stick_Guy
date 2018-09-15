@@ -16,12 +16,12 @@ public class PlayerClass : MonoBehaviour {
     }
 
     //If player wins a mini game
-    void winGame() {
+    public void winGame() {
         wins++;
     }
 
     //If player loses a mini game
-    void loseGame() {
+    public void loseGame() {
         wins--;
     }
 
