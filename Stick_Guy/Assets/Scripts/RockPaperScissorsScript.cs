@@ -35,7 +35,9 @@ public class RockPaperScissorsScript : MonoBehaviour {
 
     }
 
-    int Choose(GameObject)
+    //What is this supposed to do?
+    //It needed a name for the game object being referenced, so I just selected a placeholder name "p1"
+    int Choose(GameObject p1)
     {
         int choice = 0;
         while (choice == 0)
