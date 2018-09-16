@@ -8,10 +8,13 @@ public class PlayerMovementScript : MonoBehaviour {
     private float moveSpeed;
 
     private Vector2 direction;
+    //for animations
+    Animator myAnimator;
 
 	// Use this for initialization
 	void Start () {
-
+        //used to get any triggers
+        myAnimator = gameObject.GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -30,7 +33,7 @@ public class PlayerMovementScript : MonoBehaviour {
         //as it walks, the animator triggers update so we can see it walking (once it recognizes the trigger)  
         if (Input.GetKey(KeyCode.W)){
             direction += Vector2.up;
-            //Animator.SetTrigger(forwardWalk);
+            myAnimator.SetTrigger("forwardWalk");
         }
 
         if(Input.GetKey(KeyCode.S)){

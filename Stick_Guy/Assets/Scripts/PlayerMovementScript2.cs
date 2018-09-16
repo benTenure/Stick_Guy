@@ -30,7 +30,7 @@ public class PlayerMovementScript2 : MonoBehaviour {
         //as it walks, the animator triggers update so we can see it walking (once it recognizes the trigger)
         if(Input.GetKey(KeyCode.UpArrow)){
             direction += Vector2.up;
-           // Animator.SetTrigger(forwardWalk);
+           // Animator.SetTrigger("forwardWalk");
         }
 
         if(Input.GetKey(KeyCode.DownArrow)){
