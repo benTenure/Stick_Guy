@@ -24,11 +24,14 @@ public class RockPaperScissorsScript : MonoBehaviour {
     {
         //If Player 1 wins
         if ((RPSValue1 == 1 && RPSValue2 == 3) || (RPSValue1 == 2 && RPSValue2 == 1) || (RPSValue1 == 3 && RPSValue2 == 2))
-            p1.GetComponent<PlayerClass>()
-        
+            p1.GetComponent<PlayerClass>();
         else if ((RPSValue2 == 1 && RPSValue1 == 3) || (RPSValue2 == 2 && RPSValue1 == 1) || (RPSValue2 == 3 && RPSValue1 == 2))
+        {
 
-        else
+        }
+        else{
+
+        }
 
     }
 
