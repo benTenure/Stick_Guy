@@ -4,19 +4,45 @@ using UnityEngine;
 
 public class RockPaperScissorsScript : MonoBehaviour {
 
-    //public enum RPSValue { Rock, Paper, Scissors};
-    public int RPSValue1;
-    public int RPSValue2;
-    public GameObject p1;
-    public GameObject p2;
+    public enum RPSValue { Rock, Paper, Scissors};
 
-	// Use this for initialization
-	void Start ()
+    private int playerChoice = -1;
+    private int botChoice = -1;
+    //private int player2Choice;
+
+    private bool playerTurn = true;
+
+
+    // Update is called once per frame
+    void Update()
     {
-        //RPSValue1 = Choose(p1);
-        //RPSValue2 = Choose(p2);
+        if (playerTurn && playerChoice == -1) return;
+
+        else {
+
+        }
     }
-    
+
+    public void playerChoose(int choice)
+    {
+        playerChoice = choice;
+        playerTurn = false;
+    }
+
+    public void botChoose() {
+        botChoice = Random.Range(0,2);
+    }
+
+
+    //OLD CODE, MIGHT USE FOR REFERENCE LATER. IGNORE FOR NOW.
+    //
+    //
+    //public int RPSValue1;
+    //public int RPSValue2;
+    //public GameObject p1;
+    //public GameObject p2;
+
+    /*
     void Fight()
     {
         bool winner = false;
@@ -34,33 +60,7 @@ public class RockPaperScissorsScript : MonoBehaviour {
                 p2.GetComponent<PlayerClass>().winGame();
                 winner = true;
             }
-        }
-        
+        } 
     }
-
-   /* int Choose(GameObject player)
-    {
-        int choice = 0;
-        while (choice == 0)
-        {
-            if (Input.GetKeyDown("r"))
-                choice = 1;
-            else if (Input.GetKeyDown("p"))
-                choice = 2;
-            else if (Input.GetKeyDown("s"))
-                choice = 3;
-        }
-        return choice;
-    }
-    */
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-    void FindPlayers(GameObject p1, GameObject p2)
-    {
-
-    }
+*/
 }
