@@ -23,7 +23,7 @@ public class GameManagerScript : MonoBehaviour {
     private void Update()
     {
         //"Wait" for player input
-        if ((player1Turn && player1Choice == -1) && (player2Turn && player2Choice == -1)) return;
+        if ((player1Turn && player1Choice == -1) /*&& (player2Turn && player2Choice == -1)*/) return;
 
         else
         {
@@ -76,10 +76,16 @@ public class GameManagerScript : MonoBehaviour {
         }
     }
 
-    public void PlayerChoose(int choice)
+    public void Player1Choose(int choice)
     {
         player1Choice = choice;
         player1Turn = false;
+    }
+
+    public void Player2Choose(int choice) 
+    {
+        player2Choice = choice;
+        player2Turn = false;
     }
 
     public void BotChoose(int choice)

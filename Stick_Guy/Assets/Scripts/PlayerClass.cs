@@ -8,9 +8,13 @@ public class PlayerClass : MonoBehaviour {
     int wins;
     bool isInMiniGame;
 
+    private PlayerMovementScript p1;
+    public GameObject RPS_Menu;
+
     //Initialize variables
     private void Start()
     {
+        p1 = this.GetComponent<PlayerMovementScript>();
         wins = 0;
         isInMiniGame = false;
     }
@@ -41,7 +45,8 @@ public class PlayerClass : MonoBehaviour {
         //Set the "isInMiniGame" bool to true (One player should do it FIRST)
         isInMiniGame = true;
         print("Game has started");
-        //Start a mini game with the other player
+        p1.changeMovement();
+        RPS_Menu.SetActive(true);
     }
 
 }

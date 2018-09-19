@@ -8,6 +8,8 @@ public class PlayerMovementScript : MonoBehaviour {
     private float moveSpeed;
 
     private Vector2 direction;
+    private bool canMove = true;
+
     //for animations
     Animator myAnimator;
 
@@ -19,8 +21,10 @@ public class PlayerMovementScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        GetInput();
-        Move();
+        if (canMove) {
+            GetInput();
+            Move();
+        }
 	}
 
     public void Move(){
@@ -46,6 +50,17 @@ public class PlayerMovementScript : MonoBehaviour {
 
         if(Input.GetKey(KeyCode.D)){
             direction += Vector2.right;
+        }
+    }
+
+    public void changeMovement() {
+        if (canMove)
+        {
+            canMove = false;
+        }
+        else 
+        {
+            canMove = true;
         }
     }
 }
