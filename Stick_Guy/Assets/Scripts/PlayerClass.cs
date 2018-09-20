@@ -20,22 +20,28 @@ public class PlayerClass : MonoBehaviour {
     }
 
     //If player wins a mini game
-    public void winGame() {
+    public void WinGame() {
         wins++;
     }
 
     //If player loses a mini game
-    public void loseGame() {
+    public void LoseGame() {
         wins--;
     }
 
     //Getter for wins member (used by game manager)
-    public int getWins() {
+    public int GetWins() {
         return wins;
     }
 
+    //Setter for the mini game status member (used by game manager)
+    public void SetGameStatus(bool status)
+    {
+        isInMiniGame = status;
+    }
+
     //Getter for the mini game status member (used by game manager)
-    public bool getGameStatus()
+    public bool GetGameStatus()
     {
         return isInMiniGame;
     }
@@ -45,8 +51,8 @@ public class PlayerClass : MonoBehaviour {
         //Set the "isInMiniGame" bool to true (One player should do it FIRST)
         isInMiniGame = true;
         print("Game has started");
-        p1.changeMovement();
-        RPS_Menu.SetActive(true);
+        //p1.changeMovement();
+        //RPS_Menu.SetActive(true);
     }
 
 }
