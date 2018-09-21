@@ -265,7 +265,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 689237211}
-        m_MethodName: Player1Choose
+        m_MethodName: Player2Choose
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -323,7 +323,7 @@ GameObject:
   - component: {fileID: 263383594}
   - component: {fileID: 263383593}
   m_Layer: 5
-  m_Name: Player 1 Menu
+  m_Name: Player 2 Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -714,7 +714,7 @@ GameObject:
   - component: {fileID: 525306771}
   - component: {fileID: 525306770}
   m_Layer: 5
-  m_Name: Player 2 Menu
+  m_Name: Player 1 Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1543,7 +1543,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 689237211}
-        m_MethodName: Player1Choose
+        m_MethodName: Player2Choose
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2680,7 +2680,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 689237211}
-        m_MethodName: Player1Choose
+        m_MethodName: Player2Choose
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
