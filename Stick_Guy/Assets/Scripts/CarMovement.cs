@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CarMovement : MonoBehaviour {
 
-    float speedForce = 35f;
-    float torqueForce = 160f;
-    float driftFactor = .9f;
+    float speedForce = 50f;
+    float torqueForce = 150f;
+    float driftFactor = .8f;
 
 	// Use this for initialization
 	void Start () {
