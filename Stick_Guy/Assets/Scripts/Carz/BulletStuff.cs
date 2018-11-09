@@ -11,4 +11,13 @@ public class BulletStuff : MonoBehaviour {
 	void Start () {
         rb.velocity = transform.up * speed;
 	}
+
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        Debug.Log(collision.name);
+        Destroy(gameObject);
+    }
+
 }
