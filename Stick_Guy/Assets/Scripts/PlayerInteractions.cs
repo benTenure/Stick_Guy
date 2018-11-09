@@ -4,26 +4,27 @@ using UnityEngine;
 
 public class PlayerInteractions : MonoBehaviour {
 
-    public GameObject prompt;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public GameObject prompt_L;
+    public GameObject prompt_M;
+    public GameObject prompt_R;
 
     private void OnTriggerEnter(Collider col)
     {
        
-        if (col.gameObject.name == "Arcade Trigger")
+        if (col.gameObject.name == "L Arcade Trigger")
         {
-            Debug.Log("We found a " + col.gameObject.name);
-            prompt.gameObject.SetActive(true);
+            //Debug.Log("We found a " + col.gameObject.name);
+            prompt_L.gameObject.SetActive(true);
+            //prompt = col.gameObject.transform.Find("E Key");
 
+        }
+        if (col.gameObject.name == "M Arcade Trigger")
+        {
+            prompt_M.gameObject.SetActive(true);
+        }
+        if (col.gameObject.name == "R Arcade Trigger")
+        {
+            prompt_R.gameObject.SetActive(true);
         }
 
     }
@@ -32,9 +33,17 @@ public class PlayerInteractions : MonoBehaviour {
     {
         Debug.Log("Come back again sooN!");
 
-        if (col.gameObject.name == "Arcade Trigger")
+        if (col.gameObject.name == "L Arcade Trigger")
         {
-            prompt.gameObject.SetActive(false);
+            prompt_L.gameObject.SetActive(false);
+        }
+        if (col.gameObject.name == "M Arcade Trigger")
+        {
+            prompt_M.gameObject.SetActive(false);
+        }
+        if (col.gameObject.name == "R Arcade Trigger")
+        {
+            prompt_R.gameObject.SetActive(false);
         }
     }
 }
