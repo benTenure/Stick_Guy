@@ -4,16 +4,11 @@ using UnityEngine;
 
 public class Spin : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-
     public float speed = 100;
+
 	// Update is called once per frame
-	void Update () {
-
+	void Update ()
+    {
         transform.Rotate(Vector3.up, speed * Time.deltaTime);
-
 	}
 }

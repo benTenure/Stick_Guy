@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/ArcadeLobby.unity
+    guid: a9a8206b72c5a0f4baf726e5491a436b
+  - enabled: 1
+    path: Assets/Scenes/SpaceInvaders.unity
+    guid: b5bf528b911b3294d850e84160b17c5d
   m_configObjects: {}
