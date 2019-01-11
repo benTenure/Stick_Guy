@@ -15,24 +15,42 @@ public class MovementScript : MonoBehaviour {
 
     public Animator anim;
     public Camera cam;
-    public CharacterController controller;
 
     public bool canMove = true;
 
-    private float verticalVelocity;
-    private Vector3 moveVector;
-        
+    // New (Old really) movement
+    private Vector3 moveInput;
+    private Vector3 moveVelocity;
+    public float moveSpeed;
+    private float pressRightTrigger;
+    private Rigidbody rb;
 
+    public GunScript gun;
 
 	// Use this for initialization
 	void Start () {
         anim = this.GetComponent<Animator>();
+        rb = this.GetComponent<Rigidbody>();
         cam = Camera.main;
-        controller = this.GetComponent<CharacterController>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+        // Creates vector for new movement
+        moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
+        moveVelocity = moveInput * moveSpeed;
+
+        // ALWAYS check if trigger is being pushed
+        pressRightTrigger = Input.GetAxisRaw("Fire1");
+
+        // Shooting your gun
+        if (pressRightTrigger > 0)
+            gun.isFiring = true;
+        else
+            gun.isFiring = false;
+
+        // Moving the player
         if (canMove)
         {
             InputMagnitude();
@@ -40,17 +58,14 @@ public class MovementScript : MonoBehaviour {
         
 	}
 
+    void FixedUpdate()
+    {
+        // This actually moves the player
+        rb.velocity = moveVelocity;
+    }
+
     void PlayerMoveAndRotation() {
-        InputX = Input.GetAxis("Horizontal");
-        InputZ = Input.GetAxis("Vertical");
-
-        float div = 0.5f;
-
-        //Vector3 temp = new Vector3(InputX * div, 0, InputZ * div);
-        //temp.Normalize();
-
-        controller.Move(new Vector3(InputX * div, 0, InputZ * div));
-
+        // Rotating the player
         var camera = Camera.main;
         var forward = cam.transform.forward;
         var right = cam.transform.right;
@@ -63,7 +78,8 @@ public class MovementScript : MonoBehaviour {
 
         desiredMoveDirection = forward * InputZ + right * InputX;
 
-        if (blockRotationPlayer == false) {
+        if (blockRotationPlayer == false)
+        {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(desiredMoveDirection), desiredRotationSpeed);
         }
     }
@@ -74,8 +90,11 @@ public class MovementScript : MonoBehaviour {
         InputX = Input.GetAxis("Horizontal");
         InputZ = Input.GetAxis("Vertical");
 
-        anim.SetFloat("InputX", InputX, 0.0f, Time.deltaTime * 2f);
-        anim.SetFloat("InputZ", InputZ, 0.0f, Time.deltaTime * 2f);
+        // anim.SetFloat("InputX", InputX, 0.0f, Time.deltaTime * 2f);
+        // anim.SetFloat("InputZ", InputZ, 0.0f, Time.deltaTime * 2f);
+
+        anim.SetFloat("InputX", InputX, 0.0f, Time.deltaTime);
+        anim.SetFloat("InputZ", InputZ, 0.0f, Time.deltaTime);
 
         //Calculate input magnitude (for controlling animations)
         speed = new Vector2(InputX, InputZ).sqrMagnitude;
