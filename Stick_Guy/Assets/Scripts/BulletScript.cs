@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour {
 
     public float speed;
-    public float counter = 0.5f;
+    public float deathCounter = 0.5f;
 
     // So we can give the player points
     public GameObject player;
@@ -20,9 +20,9 @@ public class BulletScript : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        counter -= Time.deltaTime;
+        deathCounter -= Time.deltaTime;
 
-        if(counter <= 0)
+        if(deathCounter <= 0)
         {
             Destroy(gameObject);
         }
@@ -31,7 +31,7 @@ public class BulletScript : MonoBehaviour {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
 	}
 
-    private void OnCollisionEnter(Collision col)
+    private void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "Enemy")
         {
@@ -41,7 +41,7 @@ public class BulletScript : MonoBehaviour {
         }
 
         // Otherwise just make the bullet disappear
-        Destroy(gameObject);
+        //Destroy(gameObject);
 
         // Maybe add particle effects at the point of collision so it leaves in a flashy light show!
     }
