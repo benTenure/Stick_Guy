@@ -18,6 +18,7 @@ public class GameOverScript : MonoBehaviour {
 	void Update () {
 		if (isPlayerDead)
         {
+            // Basically pauses the game when you die
             Time.timeScale = 0;
             gameOver.enabled = true;
         }

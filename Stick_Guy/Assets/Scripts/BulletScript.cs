@@ -5,14 +5,44 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour {
 
     public float speed;
-	
-	// Update is called once per frame
-	void Update () {
+    public float counter = 0.5f;
+
+    // So we can give the player points
+    public GameObject player;
+    public PlayerInteractions PI;
+
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        PI = player.GetComponent<PlayerInteractions>();
+    }
+
+    // Update is called once per frame
+    void Update () {
+
+        counter -= Time.deltaTime;
+
+        if(counter <= 0)
+        {
+            Destroy(gameObject);
+        }
+
+        // Actually moves the bullet forward
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
 	}
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision col)
     {
-        Destroy(this);
+        if (col.gameObject.tag == "Enemy")
+        {
+            Debug.Log("We hit the enemy captain");
+            PI.playerScore += 100;
+            Destroy(gameObject);
+        }
+
+        // Otherwise just make the bullet disappear
+        Destroy(gameObject);
+
+        // Maybe add particle effects at the point of collision so it leaves in a flashy light show!
     }
 }

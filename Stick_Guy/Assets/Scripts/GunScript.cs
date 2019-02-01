@@ -14,8 +14,13 @@ public class GunScript : MonoBehaviour {
 
     public Transform bulletSpawn;
 
-	// Update is called once per frame
-	void Update ()
+    private void Start()
+    {
+        shotTimer = fireRate;
+    }
+
+    // Update is called once per frame
+    void Update ()
     {
 		if (isFiring)
         {
@@ -29,7 +34,7 @@ public class GunScript : MonoBehaviour {
             }
             else
             {
-                shotTimer = 0;
+               
             }
         }
 	}
