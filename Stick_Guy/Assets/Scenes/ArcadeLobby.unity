@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9acd9f1c5abfe5f4fb794027dcd2b030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 1.5
   playerPos: {fileID: 2140137356}
 --- !u!23 &57810318
 MeshRenderer:
@@ -1788,8 +1788,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1350179832}
-  m_LocalRotation: {x: 0.19900025, y: 0, z: 0, w: 0.9799995}
-  m_LocalPosition: {x: 0, y: 4.51, z: -11.06}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
