@@ -10,6 +10,8 @@ public class CabinetAIScript : MonoBehaviour {
     // Chasing player variables
     public Transform playerPos;
 
+    private int health = 9;
+
 	// Update is called once per frame
 	void Update () {
 
@@ -24,12 +26,27 @@ public class CabinetAIScript : MonoBehaviour {
         // Move to the player
         transform.Translate(new Vector3(0, 0, speed * Time.deltaTime));
 
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
 
-        // Find the player
+    }
 
-        // Move to the player
+    public void hurtEnemy()
+    {
+        health -= 1;
+        Debug.Log("Enemy has been hurt");
+    }
 
-        // Update the player's CURRENT position
+    private void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            speed = 0;
+            PlayerInteractions p = col.collider.GetComponent<PlayerInteractions>();
+            p.HurtPlayer();
+        }
 
     }
 }

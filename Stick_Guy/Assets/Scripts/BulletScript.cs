@@ -35,14 +35,17 @@ public class BulletScript : MonoBehaviour {
     {
         if (col.gameObject.tag == "Enemy")
         {
+            // Call method to decrement life from enemy
+            col.GetComponent<CabinetAIScript>().hurtEnemy();
+
             Debug.Log("We hit the enemy captain");
             PI.playerScore += 100;
+
+            // Get rid of the bullet now
             Destroy(gameObject);
+
+            // Maybe add particle effects at the point of collision so it leaves in a flashy light show!
         }
-
-        // Otherwise just make the bullet disappear
-        //Destroy(gameObject);
-
-        // Maybe add particle effects at the point of collision so it leaves in a flashy light show!
     }
+
 }

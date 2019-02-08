@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class MovementScript : MonoBehaviour {
 
-    //Variable Declarations
+    // Float values for controlling animations
     public float InputX;
     public float InputZ;
-    public Vector3 desiredMoveDirection;
-    public bool blockRotationPlayer;
-    public float desiredRotationSpeed;
-    public float speed;
-    public float allowPlayerRotation;
 
+    // Necessary components
     public Animator anim;
     public Camera cam;
+    private Rigidbody rb;
+    public GunScript gun;
 
+    // Booleans for "states"
     public bool canMove = true;
 
     // New (Old really) movement
@@ -23,9 +22,6 @@ public class MovementScript : MonoBehaviour {
     private Vector3 moveVelocity;
     public float moveSpeed;
     private float pressRightTrigger;
-    private Rigidbody rb;
-
-    public GunScript gun;
 
 	// Use this for initialization
 	void Start () {
@@ -37,23 +33,37 @@ public class MovementScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        // Creates vector for new movement
-        moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
-        moveVelocity = moveInput * moveSpeed;
+        InputX = Mathf.Abs(Input.GetAxis("Horizontal"));
+        InputZ = Mathf.Abs(Input.GetAxis("Vertical"));
 
-        // ALWAYS check if trigger is being pushed
-        pressRightTrigger = Input.GetAxisRaw("Fire1");
-
-        // Shooting your gun
-        if (pressRightTrigger > 0)
-            gun.isFiring = true;
-        else
-            gun.isFiring = false;
-
-        // Moving the player
+        // If player is a state that allows movement
+        // (Right now that means not in a cutscene/animation)
         if (canMove)
         {
-            InputMagnitude();
+            // Creates vector for new movement
+            moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
+            moveVelocity = moveInput * moveSpeed;
+
+            // Send current "speeds" to animation controller
+            anim.SetFloat("InputX", InputX);
+            anim.SetFloat("InputZ", InputZ);
+
+            // ALWAYS check if trigger is being pushed
+            pressRightTrigger = Input.GetAxisRaw("Fire1");
+
+            // Shooting your gun
+            if (pressRightTrigger > 0)
+                gun.isFiring = true;
+            else
+                gun.isFiring = false;
+
+            // Using the right stick for rotation of character
+            Vector3 playerDirection = Vector3.right * Input.GetAxisRaw("R_Horizontal") + Vector3.forward * -Input.GetAxisRaw("R_Vertical");
+
+            if (playerDirection.sqrMagnitude > 0.0f)
+            {
+                transform.rotation = Quaternion.LookRotation(playerDirection, Vector3.up);
+            }
         }
         
 	}
@@ -64,49 +74,4 @@ public class MovementScript : MonoBehaviour {
         rb.velocity = moveVelocity;
     }
 
-    void PlayerMoveAndRotation() {
-        // Rotating the player
-        var camera = Camera.main;
-        var forward = cam.transform.forward;
-        var right = cam.transform.right;
-
-        forward.y = 0f;
-        right.y = 0f;
-
-        forward.Normalize();
-        right.Normalize();
-
-        desiredMoveDirection = forward * InputZ + right * InputX;
-
-        if (blockRotationPlayer == false)
-        {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(desiredMoveDirection), desiredRotationSpeed);
-        }
-    }
-
-    void InputMagnitude() {
-
-        //Calculate input vectors
-        InputX = Input.GetAxis("Horizontal");
-        InputZ = Input.GetAxis("Vertical");
-
-        // anim.SetFloat("InputX", InputX, 0.0f, Time.deltaTime * 2f);
-        // anim.SetFloat("InputZ", InputZ, 0.0f, Time.deltaTime * 2f);
-
-        anim.SetFloat("InputX", InputX, 0.0f, Time.deltaTime);
-        anim.SetFloat("InputZ", InputZ, 0.0f, Time.deltaTime);
-
-        //Calculate input magnitude (for controlling animations)
-        speed = new Vector2(InputX, InputZ).sqrMagnitude;
-
-        //Physically move player
-        if (speed > allowPlayerRotation) {
-            anim.SetFloat("InputMagnitude", speed, 0.0f, Time.deltaTime);
-            PlayerMoveAndRotation();
-        }
-        else if (speed < allowPlayerRotation) {
-            anim.SetFloat("InputMagnitude", speed, 0.0f, Time.deltaTime);
-        }
-
-    }
 }

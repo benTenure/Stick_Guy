@@ -6,11 +6,24 @@ using UnityEngine.SceneManagement;
 
 public class PlayerInteractions : MonoBehaviour {
 
+    enum playerStates
+    {
+        NORMAL,
+        FIGHT4LIFE,
+        DEAD
+    };
+
+    private int currentState = (int)playerStates.NORMAL;
+
     public Text scoreText;
     public Text lifeText;
 
     public int playerScore;
     public int playerLives;
+
+    public float bounce;
+
+    private Rigidbody rb;
 
     public MovementScript ms;
 
@@ -19,6 +32,7 @@ public class PlayerInteractions : MonoBehaviour {
         playerScore = 0;
         playerLives = 3;
         ms = GetComponent<MovementScript>();
+        rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -34,5 +48,13 @@ public class PlayerInteractions : MonoBehaviour {
                 SceneManager.LoadScene("SpaceInvaders", LoadSceneMode.Additive);
             }
         }
+    }
+
+    public void HurtPlayer()
+    {
+        rb.AddForce(Vector3.back * bounce);
+
+        playerLives -= 1;
+        Debug.Log("Ouchie! We've been hit!");
     }
 }
