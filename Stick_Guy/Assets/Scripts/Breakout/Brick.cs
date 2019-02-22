@@ -6,7 +6,7 @@ public class Brick : MonoBehaviour {
     private const int NUM_OF_BRICKS = 68;
     private const float X_STARTING_POS = -10f;
     private const float Y_STARTING_POS = 2.5f;
-    private const float HORIZONTAL_CHANGE = 1.25f;
+    private const float HORIZONTAL_CHANGE = 1.15f;
     private const float VERTICAL_CHANGE = 1f;
     public GameObject prefab;
 	// Use this for initialization
@@ -31,10 +31,5 @@ public class Brick : MonoBehaviour {
             Instantiate(prefab, new Vector3(positionX, positionY, 1f), Quaternion.identity);  
         }
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 }

@@ -13,9 +13,10 @@ public class MovementScript : MonoBehaviour {
     public Camera cam;
     private Rigidbody rb;
     public GunScript gun;
+    public PlayerInteractions pi;
 
     // Booleans for "states"
-    public bool canMove = true;
+    public bool canMove;
 
     // New (Old really) movement
     private Vector3 moveInput;
@@ -25,6 +26,7 @@ public class MovementScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        pi = this.GetComponent<PlayerInteractions>();
         anim = this.GetComponent<Animator>();
         rb = this.GetComponent<Rigidbody>();
         cam = Camera.main;
@@ -33,6 +35,10 @@ public class MovementScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        // Make sure the player can do stuff
+        canMove = pi.playerActive;
+
+        // Need absolute values because negatives dont make anims work :(
         InputX = Mathf.Abs(Input.GetAxis("Horizontal"));
         InputZ = Mathf.Abs(Input.GetAxis("Vertical"));
 

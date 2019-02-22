@@ -6,31 +6,28 @@ using UnityEngine.SceneManagement;
 
 public class PlayerInteractions : MonoBehaviour {
 
-    enum playerStates
-    {
-        NORMAL,
-        FIGHT4LIFE,
-        DEAD
-    };
-
-    private int currentState = (int)playerStates.NORMAL;
-
+    // UI components
     public Text scoreText;
     public Text lifeText;
 
+    // Player variables
     public int playerScore;
     public int playerLives;
-
     public float bounce;
+    public bool playerActive;
 
+    // Necessary Components
     private Rigidbody rb;
-
     public MovementScript ms;
+    public Animator anim;
+    public Animation death;
 
     private void Start()
     {
+        playerActive = true;
         playerScore = 0;
         playerLives = 3;
+        anim = this.GetComponent<Animator>();
         ms = GetComponent<MovementScript>();
         rb = GetComponent<Rigidbody>();
     }
@@ -40,13 +37,23 @@ public class PlayerInteractions : MonoBehaviour {
         scoreText.text = "SCORE: " + playerScore;
         lifeText.text = "LIFE: " + playerLives;
 
-        if(ms.canMove)
+        if(playerActive)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                ms.canMove = false;
+                playerActive = false;
                 SceneManager.LoadScene("SpaceInvaders", LoadSceneMode.Additive);
             }
+        }
+
+        // Ran out of lives?
+        if (playerLives <= 0)
+        {
+            // You're dead bro
+            playerActive = !playerActive;
+
+            // Now we kill you
+            anim.SetBool("isDead", true);
         }
     }
 

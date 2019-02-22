@@ -9,26 +9,37 @@ public class CabinetAIScript : MonoBehaviour {
 
     // Chasing player variables
     public Transform playerPos;
+    public PlayerInteractions pi;
 
-    private int health = 9;
+    private int health = 5;
 
-	// Update is called once per frame
-	void Update () {
+    private void Start()
+    {
+        GameObject p = GameObject.FindGameObjectWithTag("Player");
+        pi = p.GetComponent<PlayerInteractions>();
+    }
 
-        // From unity answers
-        // https://answers.unity.com/questions/938221/basic-enemy-ai-in-c.html
+    // Update is called once per frame
+    void Update () {
 
-        //Rotate to look at player
-        //transform.LookAt(playerPos);
-        transform.LookAt(new Vector3(playerPos.transform.position.x, playerPos.transform.position.y + 0.8f, playerPos.transform.position.z));
-        //transform.Rotate(new Vector3(0, -90, 0), Space.Self);
-
-        // Move to the player
-        transform.Translate(new Vector3(0, 0, speed * Time.deltaTime));
-
-        if (health <= 0)
+        //Only chase if player is alive/active
+        if (pi.playerActive)
         {
-            Destroy(gameObject);
+            // From unity answers
+            // https://answers.unity.com/questions/938221/basic-enemy-ai-in-c.html
+
+            //Rotate to look at player
+            //transform.LookAt(playerPos);
+            transform.LookAt(new Vector3(playerPos.transform.position.x, playerPos.transform.position.y + 0.8f, playerPos.transform.position.z));
+            //transform.Rotate(new Vector3(0, -90, 0), Space.Self);
+
+            // Move to the player
+            transform.Translate(new Vector3(0, 0, speed * Time.deltaTime));
+
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
 
     }

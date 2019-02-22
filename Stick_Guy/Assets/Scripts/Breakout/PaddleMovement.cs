@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PaddleMovement : MonoBehaviour {
+
     public float moveSpeed = 10f;
     private Rigidbody2D rb;
+
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody2D>();
     }
-
 
     private void FixedUpdate()
     {
@@ -18,6 +19,7 @@ public class PaddleMovement : MonoBehaviour {
         Vector2 movementVector = new Vector2(movement, 0);
         rb.AddForce(movementVector * moveSpeed); 
         */
+
         Vector2 movementVector = Vector2.zero;
 
         if (Input.GetKey(KeyCode.A))

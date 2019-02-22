@@ -37,11 +37,15 @@ public class BallMovement : MonoBehaviour
         {
             random = Random.Range(-20, 20);
             xVel *= -1 + random / 500;
+            xVel *= -1;
+            yVel += random / 500;
         }
         if(collision.gameObject.name == "Ceiling")
         {
             random = Random.Range(-20, 20);
             yVel *= -1 + random / 500;
+            yVel *= -1;
+            xVel += random / 500;
         }
         if (collision.gameObject.name == "Paddle")
         {
@@ -51,16 +55,22 @@ public class BallMovement : MonoBehaviour
                 {
                     random = Random.Range(-20, 20);
                     xVel *= -1 + random / 500;
+                    xVel *= -1;
+                    yVel += random / 500;
                 }
                 random = Random.Range(-20, 20);
                 yVel *= -1 + random / 500;
-               
+                yVel *= -1;
+                xVel += random / 500;
+
             }
             else if (this.transform.position.x <= collision.gameObject.transform.position.x + 1.5) // Middle of paddle
             {
                 random = Random.Range(-20, 20);
                 yVel *= -1 + random / 500;
-                
+                yVel *= -1;
+                xVel += random / 500;
+
             }
             else  // Right side of paddle if (this.transform.position.x <= collision.gameObject.transform.position.x + 4.5)
             {
@@ -68,10 +78,14 @@ public class BallMovement : MonoBehaviour
                 {
                     random = Random.Range(-20, 20);
                     xVel *= -1 + random / 500;
+                    xVel *= -1;
+                    yVel += random / 500;
                 }
                 random = Random.Range(-20, 20);
                 yVel *= -1 + random / 500;
-                
+                yVel *= -1;
+                xVel += random / 500;
+
             }
         }
         // brick dimensions are .75 by .5
@@ -83,18 +97,24 @@ public class BallMovement : MonoBehaviour
                 print("TOP");
                 random = Random.Range(-20, 20);
                 yVel *= -1 + random / 500;
+                yVel *= -1;
+                xVel += random / 500;
             }
             else if (this.transform.position.x <= collision.gameObject.transform.position.x) // right side of brick
             {
                 print("RIGHT");
                 random = Random.Range(-20, 20);
                 xVel *= -1 + random / 500;
+                xVel *= -1;
+                yVel += random / 500;
             }
             else if (this.transform.position.y <= collision.gameObject.transform.position.y) // bottom side of brick
             {
                 print("BOTTOM");
                 random = Random.Range(-20, 20);
                 yVel *= -1 + random / 500;
+                yVel *= -1;
+                xVel += random / 500;
 
             }
             else // left side of brick
@@ -102,6 +122,8 @@ public class BallMovement : MonoBehaviour
                 print("LEFT");
                 random = Random.Range(-20, 20);
                 xVel *= -1 + random / 500;
+                xVel *= -1;
+                yVel += random / 500;
             }
         }
 

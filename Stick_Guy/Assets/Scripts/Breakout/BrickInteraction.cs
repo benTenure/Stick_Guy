@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class BrickInteraction : MonoBehaviour {
     int health;
+    private const int MAX_HEALTH = 3;
+
 	// Use this for initialization
 	void Start () {
-        health = 3;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+        health = MAX_HEALTH;
 	}
 
     private void OnCollisionEnter2D(Collision2D collision)
