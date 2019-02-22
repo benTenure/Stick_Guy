@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BallMovement : MonoBehaviour
 {
-
     public float moveSpeed = 20f;
     private Transform rb;
     private float xVel = 0f;
@@ -33,18 +32,15 @@ public class BallMovement : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         float random;
+        random = Random.Range(-20, 20);
         if (collision.gameObject.name == "Wall1" || collision.gameObject.name == "Wall2")
         {
-            random = Random.Range(-20, 20);
             xVel *= -1 + random / 500;
-            xVel *= -1;
             yVel += random / 500;
         }
         if(collision.gameObject.name == "Ceiling")
         {
-            random = Random.Range(-20, 20);
             yVel *= -1 + random / 500;
-            yVel *= -1;
             xVel += random / 500;
         }
         if (collision.gameObject.name == "Paddle")
@@ -53,22 +49,17 @@ public class BallMovement : MonoBehaviour
             {
                 if (xVel > 0)
                 {
-                    random = Random.Range(-20, 20);
                     xVel *= -1 + random / 500;
-                    xVel *= -1;
                     yVel += random / 500;
                 }
                 random = Random.Range(-20, 20);
                 yVel *= -1 + random / 500;
-                yVel *= -1;
                 xVel += random / 500;
 
             }
             else if (this.transform.position.x <= collision.gameObject.transform.position.x + 1.5) // Middle of paddle
             {
-                random = Random.Range(-20, 20);
                 yVel *= -1 + random / 500;
-                yVel *= -1;
                 xVel += random / 500;
 
             }
@@ -76,14 +67,11 @@ public class BallMovement : MonoBehaviour
             {
                 if (xVel < 0)
                 {
-                    random = Random.Range(-20, 20);
                     xVel *= -1 + random / 500;
-                    xVel *= -1;
                     yVel += random / 500;
                 }
                 random = Random.Range(-20, 20);
                 yVel *= -1 + random / 500;
-                yVel *= -1;
                 xVel += random / 500;
 
             }
@@ -94,35 +82,27 @@ public class BallMovement : MonoBehaviour
         {
             if (this.transform.position.y <= collision.gameObject.transform.position.y) // top side of brick
             {
-                print("TOP");
-                random = Random.Range(-20, 20);
+                //print("TOP");
                 yVel *= -1 + random / 500;
-                yVel *= -1;
                 xVel += random / 500;
             }
             else if (this.transform.position.x <= collision.gameObject.transform.position.x) // right side of brick
             {
-                print("RIGHT");
-                random = Random.Range(-20, 20);
+               // print("RIGHT");
                 xVel *= -1 + random / 500;
-                xVel *= -1;
                 yVel += random / 500;
             }
             else if (this.transform.position.y <= collision.gameObject.transform.position.y) // bottom side of brick
             {
-                print("BOTTOM");
-                random = Random.Range(-20, 20);
+              //  print("BOTTOM");
                 yVel *= -1 + random / 500;
-                yVel *= -1;
                 xVel += random / 500;
 
             }
             else // left side of brick
             {
-                print("LEFT");
-                random = Random.Range(-20, 20);
+               // print("LEFT");
                 xVel *= -1 + random / 500;
-                xVel *= -1;
                 yVel += random / 500;
             }
         }
