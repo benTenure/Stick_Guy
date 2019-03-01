@@ -37,6 +37,7 @@ public class MovementScript : MonoBehaviour {
 
         // Make sure the player can do stuff
         canMove = pi.playerActive;
+        //print("Can you move: " + canMove);
 
         // Need absolute values because negatives dont make anims work :(
         InputX = Mathf.Abs(Input.GetAxis("Horizontal"));
@@ -44,7 +45,7 @@ public class MovementScript : MonoBehaviour {
 
         // If player is a state that allows movement
         // (Right now that means not in a cutscene/animation)
-        if (canMove)
+        if (canMove == true)
         {
             // Creates vector for new movement
             moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));

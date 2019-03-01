@@ -49,7 +49,7 @@ public class CabinetAIScript : MonoBehaviour {
         health -= 1;
         Debug.Log("Enemy has been hurt");
     }
-
+/*
     private void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.tag == "Player")
@@ -60,4 +60,5 @@ public class CabinetAIScript : MonoBehaviour {
         }
 
     }
+*/
 }
