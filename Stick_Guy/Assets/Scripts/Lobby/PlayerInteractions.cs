@@ -34,7 +34,7 @@ public class PlayerInteractions : MonoBehaviour {
     {
         playerActive = true;
         playerScore = 0;
-        playerLives = 2;
+        playerLives = 4;
         anim = this.GetComponent<Animator>();
         ms = GetComponent<MovementScript>();
         rb = GetComponent<Rigidbody>();
