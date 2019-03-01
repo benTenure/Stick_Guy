@@ -14,19 +14,20 @@ public class PaddleMovement : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        /*
+        
         float movement = Input.GetAxis("Horizontal");
         Vector2 movementVector = new Vector2(movement, 0);
-        rb.AddForce(movementVector * moveSpeed); 
-        */
+        Vector2 movementVelocity = movementVector * moveSpeed;
+        rb.velocity = movementVelocity;
 
+        /*
         Vector2 movementVector = Vector2.zero;
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetAxis("Horizontal") < 0)
         {
             movementVector.x = (transform.right * Time.deltaTime * -moveSpeed).x;
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetAxis("Horizontal") > 0)
         {
             movementVector.x = (transform.right * Time.deltaTime * moveSpeed).x;
         }
@@ -34,6 +35,7 @@ public class PaddleMovement : MonoBehaviour {
         movementVector = movementVector + (Vector2)(transform.position);
 
         rb.MovePosition(movementVector);
+        */
     }
 
 }

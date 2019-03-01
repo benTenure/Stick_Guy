@@ -24,7 +24,6 @@ public class BallMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 movementVector = new Vector3(xVel, yVel);
         rb.position += Vector3.down * (yVel);
         rb.position += Vector3.right * (xVel);
     }

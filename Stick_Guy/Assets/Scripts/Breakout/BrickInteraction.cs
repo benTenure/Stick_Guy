@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BrickInteraction : MonoBehaviour {
     int health;
-    private const int MAX_HEALTH = 3;
+    private const int MAX_HEALTH = 1;
 
 	// Use this for initialization
 	void Start () {
