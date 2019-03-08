@@ -17,7 +17,7 @@ public class Target : MonoBehaviour
         int[] coordinatesY = new int[TARGETS];
         for (int i = 0; i < TARGETS; i++)
         {
-            randomX = Random.Range(-10, 10);
+            randomX = Random.Range(-8, 8);
             foreach(int x in coordinatesX)
             {
                 if(x == randomX)
