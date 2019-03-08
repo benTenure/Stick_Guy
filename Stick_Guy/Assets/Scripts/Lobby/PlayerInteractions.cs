@@ -8,7 +8,6 @@ public class PlayerInteractions : MonoBehaviour {
 
     // UI components
     public Text scoreText;
-    public Text lifeText;
 
     // Player variables
     public int playerScore;
@@ -29,6 +28,7 @@ public class PlayerInteractions : MonoBehaviour {
     public FadingTextScript gameOver;
     public FadeBlackScript blackScreen;
     public PowerUp pow;
+    public HealthBarScript hb;
 
     private void Start()
     {
@@ -43,7 +43,6 @@ public class PlayerInteractions : MonoBehaviour {
     private void Update()
     {
         scoreText.text = "SCORE: " + playerScore;
-        lifeText.text = "LIFE: " + playerLives;
 
         //Debug.Log("notAttacked: " + notAttacked);
 
@@ -79,6 +78,7 @@ public class PlayerInteractions : MonoBehaviour {
         }
     }
 
+    /*
     private void FixedUpdate()
     {
         if (notAttacked == true)
@@ -99,23 +99,26 @@ public class PlayerInteractions : MonoBehaviour {
             }
         }
     }
+    */
 
     private void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.tag == "Enemy")
         {
             // Calculate angle between the collision point and the player
-            direction = col.contacts[0].point - transform.position;
+            direction = col.GetContact(0).point - transform.position; 
 
             // Make it the opposite direction of enemy
             direction = -direction.normalized;
 
-            // Move the player back
-            //rb.AddForce(dir * bounce);
-            //rb.MovePosition(direction * bounce);
+            Vector3 temp = new Vector3(0f, direction.y, 0f);
+
+            transform.rotation = Quaternion.LookRotation(temp);
 
             notAttacked = false;
             playerLives -= 1;
+
+            hb.ChangeHealth(playerLives);
         }
     }
 
