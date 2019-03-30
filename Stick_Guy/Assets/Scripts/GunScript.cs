@@ -25,7 +25,7 @@ public class GunScript : MonoBehaviour {
 		if (isFiring)
         {
             shotTimer -= Time.deltaTime;
-
+                
             if (shotTimer <= 0)
             {
                 shotTimer = fireRate;

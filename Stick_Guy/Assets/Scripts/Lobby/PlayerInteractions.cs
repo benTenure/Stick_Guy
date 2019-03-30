@@ -27,7 +27,7 @@ public class PlayerInteractions : MonoBehaviour {
     public Animation death;
     public FadingTextScript gameOver;
     public FadeBlackScript blackScreen;
-    public PowerUp pow;
+    public PowerUp pow = null;
     public HealthBarScript hb;
 
     private void Start()
@@ -126,6 +126,27 @@ public class PlayerInteractions : MonoBehaviour {
     {
         if (col.tag == "PowerUp")
         {
+            string powerUpName = col.name;
+
+            if(powerUpName == "Shield Pick Up")
+            {
+                GameObject p = GameObject.Find("Shields");
+                pow = p.GetComponent<Shields_PU>(); // HAVE PUBLIC VARIABLES FOR EACH POWER UP - Ben
+            }
+
+            else if(powerUpName == "Spread Pick Up")
+            {
+                print("Entered Spread");
+                GameObject p = GameObject.Find("Bullet_Spawn_Left");
+                //p.SetActive(true);
+                pow = p.GetComponent<Spread_PU>();
+                pow.StartPowerUp();
+
+                p = GameObject.Find("Bullet_Spawn_Right");
+                //p.SetActive(true);
+                pow = p.GetComponent<Spread_PU>();
+            }
+            
             // Make pick up disappear
             col.gameObject.SetActive(false);
 
