@@ -10,6 +10,7 @@ public class CabinetAIScript : MonoBehaviour {
     // Chasing player variables
     public Transform playerPos;
     public PlayerInteractions pi;
+    private Animator anim;
 
     private int health = 5;
 
@@ -17,6 +18,7 @@ public class CabinetAIScript : MonoBehaviour {
     {
         GameObject p = GameObject.FindGameObjectWithTag("Player");
         pi = p.GetComponent<PlayerInteractions>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -25,6 +27,8 @@ public class CabinetAIScript : MonoBehaviour {
         //Only chase if player is alive/active
         if (pi.playerActive)
         {
+            anim.SetBool("playerAlive", true);
+
             // From unity answers
             // https://answers.unity.com/questions/938221/basic-enemy-ai-in-c.html
 
@@ -40,6 +44,10 @@ public class CabinetAIScript : MonoBehaviour {
             {
                 Destroy(gameObject);
             }
+        }
+        else
+        {
+            anim.SetBool("playerAlive", false);
         }
 
     }

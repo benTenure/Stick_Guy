@@ -16,6 +16,10 @@ public class HealthBarScript : MonoBehaviour
 
     public void ChangeHealth(int index)
     {
-        currImg.overrideSprite = img_array[index];
+        if(index < 5 && index >= 0)
+        {
+            currImg.overrideSprite = img_array[index];
+        }
+        
     }
 }
