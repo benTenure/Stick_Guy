@@ -17,6 +17,8 @@ public class CabinetAIScript : MonoBehaviour {
     private void Start()
     {
         GameObject p = GameObject.FindGameObjectWithTag("Player");
+
+        playerPos = p.transform;
         pi = p.GetComponent<PlayerInteractions>();
         anim = GetComponent<Animator>();
     }
@@ -33,9 +35,7 @@ public class CabinetAIScript : MonoBehaviour {
             // https://answers.unity.com/questions/938221/basic-enemy-ai-in-c.html
 
             //Rotate to look at player
-            //transform.LookAt(playerPos);
-            transform.LookAt(new Vector3(playerPos.transform.position.x, playerPos.transform.position.y + 0.8f, playerPos.transform.position.z));
-            //transform.Rotate(new Vector3(0, -90, 0), Space.Self);
+            transform.LookAt(playerPos);
 
             // Move to the player
             transform.Translate(new Vector3(0, 0, speed * Time.deltaTime));
@@ -57,16 +57,4 @@ public class CabinetAIScript : MonoBehaviour {
         health -= 1;
         Debug.Log("Enemy has been hurt");
     }
-/*
-    private void OnCollisionEnter(Collision col)
-    {
-        if (col.gameObject.tag == "Player")
-        {
-            speed = 0;
-            PlayerInteractions p = col.collider.GetComponent<PlayerInteractions>();
-            p.HurtPlayer();
-        }
-
-    }
-*/
 }
