@@ -10,7 +10,7 @@ public class EnemySpawnerScript : MonoBehaviour
     [SerializeField]
     private Transform player;
 
-    private float timer = 5f;
+    private float timer = 2.5f;
 
     // Update is called once per frame
     void Update()
