@@ -11,10 +11,15 @@ public class BulletScript : MonoBehaviour {
     public GameObject player;
     public PlayerInteractions PI;
 
+    [SerializeField]
+    private AudioClip hit;
+    private AudioSource audio;
+
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         PI = player.GetComponent<PlayerInteractions>();
+        audio = this.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -35,6 +40,8 @@ public class BulletScript : MonoBehaviour {
     {
         if (col.gameObject.tag == "Enemy")
         {
+            audio.PlayOneShot(hit);
+
             // Call method to decrement life from enemy
             col.GetComponent<CabinetAIScript>().hurtEnemy();
 

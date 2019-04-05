@@ -55,6 +55,5 @@ public class CabinetAIScript : MonoBehaviour {
     public void hurtEnemy()
     {
         health -= 1;
-        Debug.Log("Enemy has been hurt");
     }
 }

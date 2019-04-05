@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class GunScript : MonoBehaviour {
 
+    [SerializeField]
+    private AudioClip shoot;
+    private AudioSource audio;
+
     public bool isFiring;
 
     public BulletScript bullet;
@@ -17,6 +21,7 @@ public class GunScript : MonoBehaviour {
     private void Start()
     {
         shotTimer = fireRate;
+        audio = this.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -28,13 +33,11 @@ public class GunScript : MonoBehaviour {
                 
             if (shotTimer <= 0)
             {
+                //NEED TO REPLACE THIS WITH OBJECT POOL
                 shotTimer = fireRate;
                 BulletScript newBullet = Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation) as BulletScript;
+                audio.PlayOneShot(shoot);
                 newBullet.speed = bulletSpeed;
-            }
-            else
-            {
-               
             }
         }
 	}

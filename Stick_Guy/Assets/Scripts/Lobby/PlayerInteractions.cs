@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerInteractions : MonoBehaviour {
 
     // UI components
-    public Text scoreText;
+    public TextMeshProUGUI scoreText;
 
     // Player variables
     public int playerScore;
@@ -42,22 +43,14 @@ public class PlayerInteractions : MonoBehaviour {
 
     private void Update()
     {
-        scoreText.text = "SCORE: " + playerScore;
-
-        //Debug.Log("notAttacked: " + notAttacked);
-
-        if(playerActive == true)
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                playerActive = false;
-                SceneManager.LoadScene("SpaceInvaders", LoadSceneMode.Additive);
-            }
-        }
+        scoreText.text = "SCORE - " + playerScore;
 
         // Ran out of lives?
         if (playerLives <= 0)
         {
+            // Reset everything sorta kinda
+            rb.velocity = Vector3.zero;
+
             // You're dead bro
             playerActive = false;
 
@@ -72,48 +65,22 @@ public class PlayerInteractions : MonoBehaviour {
                 blackScreen.FadeIn();
                 gameOver.FadeIn();
                 wasUsed = true;
-                //Debug.Log("We got called at least once!");
             }
 
         }
     }
 
-    /*
-    private void FixedUpdate()
+    //REALLY NEED TO IMPLEMENT THIS, LIKE NOW!
+    private void BouncePlayerBack()
     {
-        if (notAttacked == true)
-        {
-            // Unless specified otherwise, we want to be at the position we are at.
-            targetPos = transform.position;
-        }
-        else
-        {
-            targetPos = direction;
 
-            // Smoothly transition the player to the new destination
-            rb.MovePosition(transform.position + direction * bounce * Time.deltaTime);
-
-            if (transform.position == targetPos)
-            {
-                notAttacked = true;
-            }
-        }
     }
-    */
 
     private void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.tag == "Enemy")
         {
-            // Calculate angle between the collision point and the player
-            direction = col.GetContact(0).point - transform.position; 
-
-            // Make it the opposite direction of enemy
-            direction = -direction.normalized;
-
-            Vector3 temp = new Vector3(0f, direction.y, 0f);
-
-            transform.rotation = Quaternion.LookRotation(temp);
+            transform.LookAt(col.transform);
 
             notAttacked = false;
             playerLives -= 1;

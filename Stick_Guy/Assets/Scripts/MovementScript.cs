@@ -43,7 +43,7 @@ public class MovementScript : MonoBehaviour {
         InputX = Mathf.Abs(Input.GetAxis("Horizontal"));
         InputZ = Mathf.Abs(Input.GetAxis("Vertical"));
 
-        // If player is a state that allows movement
+        // If player is in a state that allows movement
         // (Right now that means not in a cutscene/animation)
         if (canMove == true)
         {
@@ -63,6 +63,11 @@ public class MovementScript : MonoBehaviour {
                 gun.isFiring = true;
             else
                 gun.isFiring = false;
+
+            if (pi.playerLives <= 0)
+            {
+                gun.isFiring = false;
+            }
 
             // Using the right stick for rotation of character
             Vector3 playerDirection = Vector3.right * Input.GetAxisRaw("R_Horizontal") + Vector3.forward * -Input.GetAxisRaw("R_Vertical");
