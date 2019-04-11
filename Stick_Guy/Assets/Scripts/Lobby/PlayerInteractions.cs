@@ -25,7 +25,6 @@ public class PlayerInteractions : MonoBehaviour {
     private Rigidbody rb;
     public MovementScript ms;
     public Animator anim;
-    public Animation death;
     public FadingTextScript gameOver;
     public FadeBlackScript blackScreen;
     public PowerUp pow = null;
@@ -99,6 +98,7 @@ public class PlayerInteractions : MonoBehaviour {
             {
                 GameObject p = GameObject.Find("Shields");
                 pow = p.GetComponent<Shields_PU>(); // HAVE PUBLIC VARIABLES FOR EACH POWER UP - Ben
+                pow.StartPowerUp();
             }
 
             else if(powerUpName == "Spread Pick Up")
