@@ -60,13 +60,20 @@ public class MovementScript : MonoBehaviour {
 
             // Shooting your gun
             if (pressRightTrigger > 0)
+            {
                 gun.isFiring = true;
+            }
+                
             else
+            {
                 gun.isFiring = false;
+            }
+             
 
             if (pi.playerLives <= 0)
             {
                 gun.isFiring = false;
+
             }
 
             // Using the right stick for rotation of character

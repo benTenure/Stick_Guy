@@ -9,6 +9,7 @@ public class PlayerInteractions : MonoBehaviour {
 
     // UI components
     public TextMeshProUGUI scoreText;
+    public GameObject gameOverText;
 
     // Player variables
     public int playerScore;
@@ -20,6 +21,7 @@ public class PlayerInteractions : MonoBehaviour {
     private Vector3 targetPos;
     private bool notAttacked = true;
     private Vector3 direction;
+    private bool canPlayAgain = false;
 
     // Necessary Components
     private Rigidbody rb;
@@ -63,7 +65,15 @@ public class PlayerInteractions : MonoBehaviour {
             {
                 blackScreen.FadeIn();
                 gameOver.FadeIn();
+                gameOverText.SetActive(true);
                 wasUsed = true;
+                canPlayAgain = true;
+            }
+
+            if (canPlayAgain)
+            {
+                if (Input.GetButtonDown("Fire3"))
+                    SceneManager.LoadScene(0);
             }
 
         }
@@ -99,54 +109,21 @@ public class PlayerInteractions : MonoBehaviour {
                 {
                     pow = go.GetComponent<Shields_PU>();
                     pow.StartPowerUp();
-                    col.gameObject.SetActive(false);
                 }
-                else if (powerUpName == "Spread Pick Up" && go.name == "Bullet_Spawn_Left")
+                else if (powerUpName == "Spread Pick Up")
                 {
-                    pow = go.GetComponent<Spread_PU>();
-                    pow.StartPowerUp();
-                    col.gameObject.SetActive(false);
+                    if(go.name == "Bullet_Spawn_Left")
+                    {
+                        pow = go.GetComponent<Spread_PU>();
+                        pow.StartPowerUp();
+                    } else if(go.name == "Bullet_Spawn_Right")
+                    {
+                        pow = go.GetComponent<Spread_PU>();
+                        pow.StartPowerUp();
+                    }    
                 }
-                else if (powerUpName == "Spread Pick Up" && go.name == "Bullet_Spawn_Left")
-                {
-                    pow = go.GetComponent<Spread_PU>();
-                    pow.StartPowerUp();
-                    col.gameObject.SetActive(false);
-                }
             }
-
-        }
-        /*
-        if (col.tag == "PowerUp")
-        {
-            string powerUpName = col.name;
-
-            if(powerUpName == "Shield Pick Up")
-            {
-                GameObject p = GameObject.Find("Shields");
-                pow = p.GetComponent<Shields_PU>(); // HAVE PUBLIC VARIABLES FOR EACH POWER UP - Ben
-                pow.StartPowerUp();
-            }
-
-            else if(powerUpName == "Spread Pick Up")
-            {
-                print("Entered Spread");
-                GameObject p = GameObject.Find("Bullet_Spawn_Left");
-                //p.SetActive(true);
-                pow = p.GetComponent<Spread_PU>();
-                pow.StartPowerUp();
-
-                p = GameObject.Find("Bullet_Spawn_Right");
-                //p.SetActive(true);
-                pow = p.GetComponent<Spread_PU>();
-            }
-            
-            // Make pick up disappear
             col.gameObject.SetActive(false);
-
-            // Make actual power show up
-            pow.StartPowerUp();
         }
-        */
     }
 }

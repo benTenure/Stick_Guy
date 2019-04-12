@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spread_Shot_Spawn : MonoBehaviour
 {
     private float pressRightTrigger;
-    public GunScript gunSpread;
+    GunScript gunSpread;
 
     // Start is called before the first frame update
     void Start()
