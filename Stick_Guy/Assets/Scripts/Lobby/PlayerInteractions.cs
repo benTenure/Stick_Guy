@@ -9,7 +9,6 @@ public class PlayerInteractions : MonoBehaviour {
 
     // UI components
     public TextMeshProUGUI scoreText;
-    public GameObject gameOverText;
 
     // Player variables
     public int playerScore;
@@ -64,14 +63,9 @@ public class PlayerInteractions : MonoBehaviour {
             {
                 blackScreen.FadeIn();
                 gameOver.FadeIn();
-                gameOverText.SetActive(true);
                 wasUsed = true;
             }
 
-            if (Input.GetButtonDown("Fire3"))
-            { 
-                SceneManager.LoadScene(0);
-            }
         }
     }
 
@@ -96,6 +90,33 @@ public class PlayerInteractions : MonoBehaviour {
 
     private void OnTriggerEnter(Collider col)
     {
+        if(col.tag == "PowerUp")
+        {
+            string powerUpName = col.name;
+            foreach (GameObject go in Resources.FindObjectsOfTypeAll(typeof(GameObject)) as GameObject[]) // looks through EACH game object (even ones that are inactive)
+            {
+                if (powerUpName == "Shield Pick Up" && go.name == "Shields")
+                {
+                    pow = go.GetComponent<Shields_PU>();
+                    pow.StartPowerUp();
+                    col.gameObject.SetActive(false);
+                }
+                else if (powerUpName == "Spread Pick Up" && go.name == "Bullet_Spawn_Left")
+                {
+                    pow = go.GetComponent<Spread_PU>();
+                    pow.StartPowerUp();
+                    col.gameObject.SetActive(false);
+                }
+                else if (powerUpName == "Spread Pick Up" && go.name == "Bullet_Spawn_Left")
+                {
+                    pow = go.GetComponent<Spread_PU>();
+                    pow.StartPowerUp();
+                    col.gameObject.SetActive(false);
+                }
+            }
+
+        }
+        /*
         if (col.tag == "PowerUp")
         {
             string powerUpName = col.name;
@@ -126,5 +147,6 @@ public class PlayerInteractions : MonoBehaviour {
             // Make actual power show up
             pow.StartPowerUp();
         }
+        */
     }
 }
