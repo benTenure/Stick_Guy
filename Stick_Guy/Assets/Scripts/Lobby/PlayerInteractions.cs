@@ -9,6 +9,7 @@ public class PlayerInteractions : MonoBehaviour {
 
     // UI components
     public TextMeshProUGUI scoreText;
+    public GameObject gameOverText;
 
     // Player variables
     public int playerScore;
@@ -63,9 +64,14 @@ public class PlayerInteractions : MonoBehaviour {
             {
                 blackScreen.FadeIn();
                 gameOver.FadeIn();
+                gameOverText.SetActive(true);
                 wasUsed = true;
             }
 
+            if (Input.GetButtonDown("Fire3"))
+            { 
+                SceneManager.LoadScene(0);
+            }
         }
     }
 
