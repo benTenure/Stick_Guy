@@ -20,7 +20,7 @@ public class MovementScript : MonoBehaviour {
 
     // New (Old really) movement
     private Vector3 moveInput;
-    private Vector3 moveVelocity;
+    public Vector3 moveVelocity; // changing this to public so SwiftSoda can access it
     public float moveSpeed;
     private float pressRightTrigger;
 

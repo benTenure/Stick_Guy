@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 using TMPro;
 
 public class PlayerInteractions : MonoBehaviour {
-
+    // Constants
+    public const int MAX_HEALTH = 4;
+    public const int MIN_HEALTH = 0;
     // UI components
     public TextMeshProUGUI scoreText;
     public GameObject gameOverText;
@@ -36,7 +38,7 @@ public class PlayerInteractions : MonoBehaviour {
     {
         playerActive = true;
         playerScore = 0;
-        playerLives = 4;
+        playerLives = MAX_HEALTH;
         anim = this.GetComponent<Animator>();
         ms = GetComponent<MovementScript>();
         rb = GetComponent<Rigidbody>();
@@ -47,7 +49,7 @@ public class PlayerInteractions : MonoBehaviour {
         scoreText.text = "SCORE - " + playerScore;
 
         // Ran out of lives?
-        if (playerLives <= 0)
+        if (playerLives <= MIN_HEALTH)
         {
             // Reset everything sorta kinda
             rb.velocity = Vector3.zero;
@@ -123,7 +125,7 @@ public class PlayerInteractions : MonoBehaviour {
                     }    
                 }
             }
-            col.gameObject.SetActive(false);
+            
         }
     }
 }

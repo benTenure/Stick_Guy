@@ -25,7 +25,6 @@ public class Spread_PU : PowerUp
         if (_timer >= limit)
         {
             StopPowerUp();
-
         }
 
     }
