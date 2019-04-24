@@ -75,7 +75,7 @@ public class PlayerInteractions : MonoBehaviour {
             if (canPlayAgain)
             {
                 if (Input.GetButtonDown("Fire3"))
-                    SceneManager.LoadScene(0);
+                    SceneManager.LoadScene(1);
             }
 
         }
