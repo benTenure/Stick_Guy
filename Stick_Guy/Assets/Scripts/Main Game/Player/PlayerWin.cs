@@ -16,7 +16,7 @@ public class PlayerWin : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire3"))
             {
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene(1);
             }
         }
     }
