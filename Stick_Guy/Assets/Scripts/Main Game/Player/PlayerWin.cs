@@ -7,6 +7,7 @@ public class PlayerWin : MonoBehaviour
 {
     public GameObject player;
     public GameObject winText;
+    public GameObject bulletSpawn;
 
     private bool canPlayAgain = false;
 
@@ -28,6 +29,7 @@ public class PlayerWin : MonoBehaviour
             player = col.gameObject;
             // Don't let player move/shoot, same for enemies
             player.GetComponent<PlayerInteractions>().playerActive = false;
+            bulletSpawn.SetActive(false);
             // Move player to win circle
             Vector3 winPosition = new Vector3(this.transform.position.x, player.transform.position.y, this.transform.position.z);
             Quaternion winRotation = new Quaternion(0f, 180f, 0f, 0f);

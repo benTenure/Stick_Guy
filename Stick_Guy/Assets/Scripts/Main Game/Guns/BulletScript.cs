@@ -6,7 +6,7 @@ public class BulletScript : MonoBehaviour {
 
     public float speed;
     public float deathCounter = 0.5f;
-
+    
     // So we can give the player points
     public GameObject player;
     public PlayerInteractions PI;
@@ -14,7 +14,8 @@ public class BulletScript : MonoBehaviour {
     [SerializeField]
     private AudioClip hit;
     private AudioSource audio;
-
+    [SerializeField]
+    private ParticleSystem impact; 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -38,8 +39,11 @@ public class BulletScript : MonoBehaviour {
 
     private void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Enemy")
+        
+        if (col.gameObject.tag != "Player")
         {
+            Instantiate(impact, transform.position, Quaternion.identity);
+            //impact.Play();
             audio.PlayOneShot(hit);
 
             // Call method to decrement life from enemy
@@ -50,6 +54,7 @@ public class BulletScript : MonoBehaviour {
 
             Debug.Log("We hit the enemy captain");
             PI.playerScore += 100;
+
 
             // Get rid of the bullet now
             Destroy(gameObject);
