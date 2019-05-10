@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 397733213}
   - component: {fileID: 397733212}
   - component: {fileID: 397733211}
+  - component: {fileID: 8679405878083825674}
   m_Layer: 0
   m_Name: Enemy Cabinet 2
   m_TagString: Enemy
@@ -220,9 +221,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9acd9f1c5abfe5f4fb794027dcd2b030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 2
   playerPos: {fileID: 0}
   pi: {fileID: 0}
+--- !u!114 &8679405878083825674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397733208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bcfac3fab4becc4c9eccb731a1805cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &450072771
 GameObject:
   m_ObjectHideFlags: 0

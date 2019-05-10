@@ -44,14 +44,15 @@ public class BulletScript : MonoBehaviour {
 
             // Call method to decrement life from enemy
             col.GetComponent<CabinetAIScript>().hurtEnemy();
+            col.GetComponent<CabinetAIScript>().speed = 0;
+
+            col.GetComponent<Animator>().SetBool("wasHit", true);
 
             Debug.Log("We hit the enemy captain");
             PI.playerScore += 100;
 
             // Get rid of the bullet now
             Destroy(gameObject);
-
-            // Maybe add particle effects at the point of collision so it leaves in a flashy light show!
         }
     }
 
