@@ -125,6 +125,7 @@ public class PlayerInteractions : MonoBehaviour {
                     }    
                 }
             }
+            col.gameObject.SetActive(false);
             
         }
     }

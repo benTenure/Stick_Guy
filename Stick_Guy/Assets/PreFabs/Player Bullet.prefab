@@ -111,6 +111,7 @@ MonoBehaviour:
   player: {fileID: 0}
   PI: {fileID: 0}
   hit: {fileID: 8300000, guid: 63d0f66ad004c5e49a6a97e62f87588c, type: 3}
+  impact: {fileID: 895412657481612284, guid: 72cdf4a37b6b4cf4d841b57c0611c7da, type: 3}
 --- !u!82 &2209231178809096241
 AudioSource:
   m_ObjectHideFlags: 0
