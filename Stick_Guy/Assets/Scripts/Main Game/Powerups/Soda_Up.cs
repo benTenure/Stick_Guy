@@ -17,8 +17,9 @@ public class Soda_Up : MonoBehaviour
             {
                 player.playerLives++;
                 hb.ChangeHealth(player.playerLives);
+                this.gameObject.SetActive(false);
             }
         }
-       this.gameObject.SetActive(false);
+       
     }
 }
