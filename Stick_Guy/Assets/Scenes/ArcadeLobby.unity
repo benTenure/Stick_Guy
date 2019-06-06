@@ -574,6 +574,7 @@ Transform:
   - {fileID: 1545763323}
   - {fileID: 395609548}
   - {fileID: 1687569013}
+  - {fileID: 1001217470}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1815,7 +1816,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &338445251
 Transform:
   m_ObjectHideFlags: 0
@@ -3158,6 +3159,7 @@ GameObject:
   - component: {fileID: 658800365}
   - component: {fileID: 658800364}
   - component: {fileID: 658800363}
+  - component: {fileID: 658800366}
   m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -3209,7 +3211,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8a1a6a6a36a628c448a5b6d28951c897, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3237,6 +3239,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 658800361}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &658800366
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658800361}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &666927537
 GameObject:
   m_ObjectHideFlags: 0
@@ -3291,6 +3309,7 @@ GameObject:
   - component: {fileID: 681701918}
   - component: {fileID: 681701917}
   - component: {fileID: 681701916}
+  - component: {fileID: 681701919}
   m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
@@ -3342,7 +3361,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8a1a6a6a36a628c448a5b6d28951c897, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3370,6 +3389,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 681701914}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &681701919
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681701914}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!4 &703393487 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1526979485, guid: 3a33ec65708be6046839da6024b2a362,
@@ -3822,10 +3857,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shoot: {fileID: 8300000, guid: 5219ba8ef0c52634d8b5ddc85f8651ab, type: 3}
   isFiring: 0
-  bullet: {fileID: 114384221241960900, guid: e7b1c1edfd6133343918af2fa67d6eb9, type: 3}
-  bulletSpeed: 10
   fireRate: 0.2
-  bulletSpawn: {fileID: 794593428}
 --- !u!114 &794593432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4783,6 +4815,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1001217469
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1001217470}
+  - component: {fileID: 1001217471}
+  m_Layer: 0
+  m_Name: Bullet Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1001217470
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001217469}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 83830053}
+  m_RootOrder: 26
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1001217471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001217469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f59e6b40b37363409d116a643002d3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 114384221241960900, guid: e7b1c1edfd6133343918af2fa67d6eb9,
+    type: 3}
 --- !u!1 &1001939019
 GameObject:
   m_ObjectHideFlags: 0
@@ -4981,6 +5058,7 @@ GameObject:
   - component: {fileID: 1022128416}
   - component: {fileID: 1022128415}
   - component: {fileID: 1022128414}
+  - component: {fileID: 1022128417}
   m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -5032,7 +5110,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8a1a6a6a36a628c448a5b6d28951c897, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5060,6 +5138,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1022128412}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &1022128417
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022128412}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1039146117
 GameObject:
   m_ObjectHideFlags: 0
@@ -6195,6 +6289,7 @@ GameObject:
   - component: {fileID: 1281182153}
   - component: {fileID: 1281182152}
   - component: {fileID: 1281182151}
+  - component: {fileID: 1281182154}
   m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
@@ -6246,7 +6341,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8a1a6a6a36a628c448a5b6d28951c897, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6274,6 +6369,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1281182149}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &1281182154
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281182149}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1310723992
 GameObject:
   m_ObjectHideFlags: 0
@@ -8783,10 +8894,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shoot: {fileID: 8300000, guid: 5219ba8ef0c52634d8b5ddc85f8651ab, type: 3}
   isFiring: 0
-  bullet: {fileID: 114384221241960900, guid: e7b1c1edfd6133343918af2fa67d6eb9, type: 3}
-  bulletSpeed: 10
   fireRate: 0.2
-  bulletSpawn: {fileID: 1810389044}
 --- !u!114 &1810389047
 MonoBehaviour:
   m_ObjectHideFlags: 0

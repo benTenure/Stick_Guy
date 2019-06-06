@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour {
 
-    public float speed;
+    public float speed = 10f;
     public float deathCounter = 0.5f;
 
     // So we can give the player points
     public GameObject player;
-    public PlayerInteractions PI;
+    public PlayerInteractions pi;
 
     [SerializeField]
     private AudioClip hit;
@@ -18,7 +18,7 @@ public class BulletScript : MonoBehaviour {
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        PI = player.GetComponent<PlayerInteractions>();
+        pi = player.GetComponent<PlayerInteractions>();
         audio = this.GetComponent<AudioSource>();
     }
 
@@ -29,7 +29,7 @@ public class BulletScript : MonoBehaviour {
 
         if(deathCounter <= 0)
         {
-            Destroy(gameObject);
+            BulletObjectPool.Instance.ReturnToPool(this);
         }
 
         // Actually moves the bullet forward
@@ -48,11 +48,10 @@ public class BulletScript : MonoBehaviour {
 
             col.GetComponent<Animator>().SetBool("wasHit", true);
 
-            Debug.Log("We hit the enemy captain");
-            PI.playerScore += 100;
+            pi.playerScore += 100;
 
             // Get rid of the bullet now
-            Destroy(gameObject);
+            BulletObjectPool.Instance.ReturnToPool(this);
         }
     }
 

@@ -10,13 +10,8 @@ public class GunScript : MonoBehaviour {
 
     public bool isFiring;
 
-    public BulletScript bullet;
-    public float bulletSpeed;
-
     public float fireRate;
     private float shotTimer;
-
-    public Transform bulletSpawn;
 
     private void Start()
     {
@@ -30,15 +25,21 @@ public class GunScript : MonoBehaviour {
 		if (isFiring)
         {
             shotTimer -= Time.deltaTime;
-                
+
             if (shotTimer <= 0)
             {
-                //NEED TO REPLACE THIS WITH OBJECT POOL
-                shotTimer = fireRate;
-                BulletScript newBullet = Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation) as BulletScript;
-                audio.PlayOneShot(shoot);
-                newBullet.speed = bulletSpeed;
+                Fire();
             }
         }
 	}
+
+    private void Fire ()
+    {
+        shotTimer = fireRate;
+        audio.PlayOneShot(shoot);
+        var shot = BulletObjectPool.Instance.Get();
+        shot.transform.rotation = transform.rotation;
+        shot.transform.position = transform.position;
+        shot.gameObject.SetActive(true);
+    }
 }
